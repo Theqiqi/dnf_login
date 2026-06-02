@@ -1,0 +1,11 @@
+{
+  "name": "dnflogin",
+  "version-string": "1.0.0",
+  "description": "DNF login tool with MySQL and OpenSSL support",
+  "dependencies": [
+    {
+      "name": "openssl",
+      "default-features": true
+    }
+  ]
+}
