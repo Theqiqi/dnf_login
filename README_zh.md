@@ -1,8 +1,6 @@
 # 地下城与勇士 台服原生启动器 (dnflogin1)
 
-![Language](https://shields.io)
-![Build](https://shields.io)
-![Crypto](https://shields.io)
+🚀 **Core Technical Stack:** `C++23` | `CMake / Ninja` | `OpenSSL 3.x` | `MySQL 5.0 SDK`
 
 [English](./README.md) | **简体中文***
 
