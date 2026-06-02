@@ -1,0 +1,12 @@
+cmake-build-*/
+.idea/
+*.o
+*.log
+out
+vcpkg_installed
+.vs/
+idea/
+bin/
+example/
+doc
+.out
