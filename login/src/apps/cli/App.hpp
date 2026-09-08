@@ -1,5 +1,5 @@
 #pragma once
-#include "../../core/Database.hpp"
+#include "core/Database.hpp"
 #include <string>
 
 namespace dnflogin {

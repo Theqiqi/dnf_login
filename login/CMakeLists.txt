@@ -6,6 +6,10 @@ project(dnflogin1)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Single include root for all first-party headers: sources refer to them as
+# "core/X.hpp", "config/X.hpp", "model/X.hpp" -- no relative paths anywhere.
+set(DNF_SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 # 3rd Party Dependency Mapping: Local MySQL SDK Path Hooks
 set(MYSQL_ROOT ${CMAKE_SOURCE_DIR}/third_party/mysql-5.0.19-winx64)
 set(MYSQL_INCLUDE ${MYSQL_ROOT}/include)

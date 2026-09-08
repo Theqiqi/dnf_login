@@ -1,4 +1,4 @@
-#include "App.hpp"
+#include "apps/cli/App.hpp"
 
 int main() {
     dnflogin::App app;

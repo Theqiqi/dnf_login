@@ -1,5 +1,5 @@
 #pragma once
-#include "DbConfig.hpp"
+#include "model/DbConfig.hpp"
 #include <string>
 
 namespace dnflogin::model {

@@ -1,9 +1,9 @@
-#include "App.hpp"
-#include "../../config/Settings.hpp"
-#include "../../core/Crypto.hpp"
-#include "../../core/Ticket.hpp"
-#include "../../core/Path.hpp"
-#include "../../game/Launcher.hpp"
+#include "apps/cli/App.hpp"
+#include "config/Settings.hpp"
+#include "core/Crypto.hpp"
+#include "core/Ticket.hpp"
+#include "core/Path.hpp"
+#include "game/Launcher.hpp"
 
 #include <iostream>
 #include <vector>

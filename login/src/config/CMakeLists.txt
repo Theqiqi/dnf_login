@@ -9,7 +9,7 @@ add_library(dnf_config STATIC
 # this layer cannot include mysql.h, so the dependency direction is enforced by the
 # build system rather than by convention.
 target_include_directories(dnf_config PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    "${DNF_SRC_ROOT}"
 )
 
 # No linking against dnf_core / dnf_game: the config layer depends only on the plain

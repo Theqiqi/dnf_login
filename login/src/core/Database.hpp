@@ -1,5 +1,5 @@
 #pragma once
-#include "../model/DbConfig.hpp"
+#include "model/DbConfig.hpp"
 #include <string>
 
 // 前置声明，防止头文件污染

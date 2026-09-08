@@ -10,8 +10,7 @@ add_executable(dnf_launcher_cli
 
 # 3. Establish absolute include directories back into the 'src/' folder root
 target_include_directories(dnf_launcher_cli PRIVATE 
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../src"
-    "${MYSQL_INCLUDE}"
+    "${DNF_SRC_ROOT}"
 )
 
 # 4. Track target folders containing 3rd party MySQL libraries matching build configurations

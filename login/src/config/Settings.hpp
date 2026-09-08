@@ -1,5 +1,5 @@
 #pragma once
-#include "../model/LauncherConfig.hpp"
+#include "model/LauncherConfig.hpp"
 #include <string>
 
 namespace dnflogin::config {

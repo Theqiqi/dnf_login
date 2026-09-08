@@ -1,4 +1,4 @@
-#include "Settings.hpp"
+#include "config/Settings.hpp"
 
 #include <windows.h>
 
