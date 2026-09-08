@@ -24,6 +24,7 @@ target_link_directories(dnf_launcher_cli PRIVATE
 target_link_libraries(dnf_launcher_cli PRIVATE
     dnf_game         # Resolves game process booting logic
     dnf_core         # Resolves RSA decryption & database routing layers
+    dnf_config       # Resolves runtime launcher.ini into a model::LauncherConfig
     libmysql         # Resolves MySQL library links
     ws2_32           # Resolves native Windows network socket dependencies
     OpenSSL::SSL

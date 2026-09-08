@@ -1,4 +1,5 @@
 #pragma once
+#include "../model/DbConfig.hpp"
 #include <string>
 
 // 前置声明，防止头文件污染
@@ -6,13 +7,8 @@ typedef struct st_mysql MYSQL;
 
 namespace dnflogin::core {
 
-
-struct DbConfig {
-    std::string ip;
-    std::string user;
-    std::string password;
-    unsigned int port;
-};
+// Parameter struct now lives in the model layer; kept here as an alias so existing signatures stay untouched.
+using DbConfig = model::DbConfig;
 
 class Database {
 public:

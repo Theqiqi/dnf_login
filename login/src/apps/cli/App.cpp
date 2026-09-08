@@ -1,4 +1,5 @@
 #include "App.hpp"
+#include "../../config/Settings.hpp"
 #include "../../core/Crypto.hpp"
 #include "../../core/Ticket.hpp"
 #include "../../core/Path.hpp"
@@ -13,17 +14,22 @@ namespace dnflogin {
 void App::run() {
     SetConsoleOutputCP(CP_UTF8);
 
-    // Centralized Environment Settings
-    const std::string targetServerIP = "192.168.200.131"; 
-    
-    core::DbConfig dbConfig{targetServerIP, "game", "uu5!^%jg", 3306};
-
-    core::Database db(dbConfig);
-    if (!db.isValid()) {
-        std::cerr << "[-] Database connection failed. Host: " << dbConfig.ip << "\n";
+    // Only the final parameters are consumed here: the database host, port, credentials and the
+    // game server IP are no longer this layer's decision, and this layer does not care whether they
+    // come from launcher.ini or anywhere else -- the file and its parsing are sealed inside config.
+    model::LauncherConfig cfg;
+    std::string configError;
+    if (!config::Settings::load(cfg, configError)) {
+        std::cerr << "[-] " << configError << "\n";
         return;
     }
-    std::cout << "[+] Connected to target database node: " << dbConfig.ip << "\n";
+
+    core::Database db(cfg.db);
+    if (!db.isValid()) {
+        std::cerr << "[-] Database connection failed. Host: " << cfg.db.ip << ":" << cfg.db.port << "\n";
+        return;
+    }
+    std::cout << "[+] Connected to target database node: " << cfg.db.ip << ":" << cfg.db.port << "\n";
 
     // Primary Control Menu Router
     int choice = 0;
@@ -40,8 +46,8 @@ void App::run() {
     switch (choice) {
         case 1:  handleRegistration(db); break;
         case 4:  handleVectorQuery(db); break;
-        case 2:  handleUsernameLogin(db, targetServerIP); break;
-        case 3:  handleUidLogin(db, targetServerIP); break;
+        case 2:  handleUsernameLogin(db, cfg.serverIp); break;
+        case 3:  handleUidLogin(db, cfg.serverIp); break;
         default: std::cerr << "[-] Invalid choice parameters. Exiting.\n"; break;
     }
 }
