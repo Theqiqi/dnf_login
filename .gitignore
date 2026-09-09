@@ -8,6 +8,5 @@ vcpkg_installed
 idea/
 bin/
 example/
-doc
 .out
 assets
