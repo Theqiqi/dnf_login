@@ -84,7 +84,7 @@ std::string exeDirectory() {
 bool readIni(const std::string& path, std::map<std::string, std::string>& out, std::string& err) {
     std::ifstream in(path, std::ios::binary);
     if (!in) {
-        err = std::string("找不到配置文件: ") + path;
+        err = std::string("Configuration file not found: ") + path;
         return false;
     }
 
@@ -109,7 +109,7 @@ bool readIni(const std::string& path, std::map<std::string, std::string>& out, s
 bool Settings::load(model::LauncherConfig& out, std::string& err) {
     const std::string dir = exeDirectory();
     if (dir.empty()) {
-        err = "无法定位可执行文件所在目录";
+        err = "Cannot locate the directory containing the executable";
         return false;
     }
 
@@ -122,11 +122,11 @@ bool Settings::load(model::LauncherConfig& out, std::string& err) {
     auto require = [&](const char* key, const char* label, std::string& slot) -> bool {
         const auto it = kv.find(key);
         if (it == kv.end()) {
-            err = std::string("配置缺少 ") + label + " 项（文件: " + path + "）";
+            err = std::string("Missing configuration key '") + label + "' (file: " + path + ")";
             return false;
         }
         if (it->second.empty()) {
-            err = std::string("配置中 ") + label + " 项为空（文件: " + path + "）";
+            err = std::string("Configuration key '") + label + "' is empty (file: " + path + ")";
             return false;
         }
         slot = it->second;
@@ -141,18 +141,19 @@ bool Settings::load(model::LauncherConfig& out, std::string& err) {
     // only the presence of the line is required.
     const auto pass = kv.find("password");
     if (pass == kv.end()) {
-        err = std::string("配置缺少 Password 项（文件: ") + path + "，无口令请写成 Password= 留空）";
+        err = std::string("Missing configuration key 'Password' (file: ") + path
+            + ", write 'Password=' with nothing after the sign if the database has no password)";
         return false;
     }
     out.db.password = pass->second;
 
     const auto port = kv.find("port");
     if (port == kv.end()) {
-        err = std::string("配置缺少 Port 项（文件: ") + path + "）";
+        err = std::string("Missing configuration key 'Port' (file: ") + path + ")";
         return false;
     }
     if (!parsePort(port->second, out.db.port)) {
-        err = "Port 不是合法的 1-65535 端口号: " + port->second;
+        err = "Port is not a valid port number in the range 1-65535: " + port->second;
         return false;
     }
 
