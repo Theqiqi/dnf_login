@@ -26,7 +26,7 @@ if not exist "%PACKAGE_DIR%" mkdir "%PACKAGE_DIR%"
 cd /d "%PROJECT_ROOT%"
 
 :: Force CPack to stream the final generated .zip bundle directly into out/package via -B
-cpack -G ZIP --config out/build/release/CPackConfig.cmake -B "%PACKAGE_DIR%"
+cpack.exe -G ZIP --config out/build/release/CPackConfig.cmake -B "%PACKAGE_DIR%"
 
 if %ERRORLEVEL% equ 0 (
     echo.

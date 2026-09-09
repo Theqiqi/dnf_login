@@ -6,7 +6,7 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
 
 set GIT_SSL_NO_VERIFY=1
 
-cmake --preset release
-cmake --build --preset release --parallel
+cmake.exe --preset release
+cmake.exe --build --preset release --parallel
 endlocal
 pause

@@ -10,6 +10,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # "core/X.hpp", "config/X.hpp", "model/X.hpp" -- no relative paths anywhere.
 set(DNF_SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+# Deployment asset roots: res/ holds packable assets (config template next to certs/),
+# scripts/ holds helper CMake modules invoked from POST_BUILD / install rules.
+set(DNF_RES_DIR     ${CMAKE_CURRENT_SOURCE_DIR}/res)
+set(DNF_SCRIPTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
+
 # 3rd Party Dependency Mapping: Local MySQL SDK Path Hooks
 set(MYSQL_ROOT ${CMAKE_SOURCE_DIR}/third_party/mysql-5.0.19-winx64)
 set(MYSQL_INCLUDE ${MYSQL_ROOT}/include)

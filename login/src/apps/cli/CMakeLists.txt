@@ -30,7 +30,15 @@ target_link_libraries(dnf_launcher_cli PRIVATE
     OpenSSL::Crypto
 )
 
-# 6. Post-Build Routine: Safely clone the dynamic libmySQL.dll asset straight to the 'out/' runtime environment
+# 6. Post-Build Routine 1: Seed the default launcher.ini next to the exe (only if missing,
+#    so an edited runtime config is never clobbered back to the CHANGE_ME template).
+add_custom_command(TARGET dnf_launcher_cli POST_BUILD
+    COMMAND ${CMAKE_COMMAND}
+        -DTEMPLATE=${DNF_RES_DIR}/config/launcher.ini
+        -DDEST_DIR=$<TARGET_FILE_DIR:dnf_launcher_cli>
+        -P ${DNF_SCRIPTS_DIR}/CopyConfigIfMissing.cmake
+)
+# 6b. Post-Build Routine 2: Safely clone the dynamic libmySQL.dll asset straight to the 'out/' runtime environment
 add_custom_command(TARGET dnf_launcher_cli POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different 
         ${MYSQL_DLL} 
@@ -44,3 +52,7 @@ install(TARGETS dnf_launcher_cli
 
 # 2. Instruct CMake to bundle the third-party runtime database library alongside it
 install(FILES ${MYSQL_DLL} DESTINATION .)
+
+# 3. Ship the default launcher.ini template (Password=CHANGE_ME). Users edit it after install;
+#    the real credentials never enter the repository, so the package ships a safe default.
+install(FILES "${DNF_RES_DIR}/config/launcher.ini" DESTINATION .)
