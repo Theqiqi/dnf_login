@@ -25,6 +25,7 @@
       "binaryDir": "${sourceDir}/out/build/release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/out/bin/Release",
         "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/out/lib/Release"
