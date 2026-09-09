@@ -1,6 +1,6 @@
 {
   "name": "dnflogin",
-  "version-string": "1.0.0",
+  "version-string": "1.1.0",
   "description": "DNF login tool with MySQL and OpenSSL support",
   "builtin-baseline": "9849e070ad4c3383890fb1c80ae0c54325e2484a",
   "dependencies": [

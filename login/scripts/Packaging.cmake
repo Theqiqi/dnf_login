@@ -3,7 +3,7 @@
 
 set(CPACK_PACKAGE_NAME "dnf_login")
 set(CPACK_PACKAGE_VENDOR "YourNameOrStudio")
-set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_VERSION "1.1.0")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "dnf Taiwan Server Custom Pure Launcher")
 
 # Enable both Nullsoft Installers and standard ZIP compression styles simultaneously
